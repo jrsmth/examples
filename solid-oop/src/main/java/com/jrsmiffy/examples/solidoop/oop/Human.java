@@ -16,6 +16,10 @@ public class Human extends Omnivore implements Swim {
         System.out.println(String.format("The human called %s is swimming at a rate of %s knots", name, swimSpeed));
     }
 
+    public void swim(int swimSpeed){
+        System.out.println(String.format("The human called %s is swimming at a rate of %s knots", name, swimSpeed));
+    }
+
     public String getName() {
         return name;
     }

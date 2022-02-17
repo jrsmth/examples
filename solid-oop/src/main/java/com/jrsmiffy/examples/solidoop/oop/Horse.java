@@ -12,6 +12,10 @@ public class Horse extends Herbivore implements Swim {
         this.owner = owner;
     }
 
+    public void swishMane() {
+        System.out.println("All Horses have a mane");
+    }
+
     @Override
     public void digest() {
         System.out.println("Horses have 1 stomach for digesting food");
