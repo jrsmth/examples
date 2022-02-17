@@ -4,6 +4,9 @@ import com.jrsmiffy.examples.solidoop.oop.Cow;
 import com.jrsmiffy.examples.solidoop.oop.Donkey;
 import com.jrsmiffy.examples.solidoop.oop.Horse;
 import com.jrsmiffy.examples.solidoop.oop.Human;
+import com.jrsmiffy.examples.solidoop.solid.openClose.Guitar;
+import com.jrsmiffy.examples.solidoop.solid.openClose.SuperCoolGuitarWithFlames;
+import com.jrsmiffy.examples.solidoop.solid.singleResponsibility.BadBook;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -21,6 +24,8 @@ public class SolidOopApplication {
 
 	/** Execute OOP Concepts */
 	private static void executeOOPConcepts(){
+
+		System.out.println("OOP:");
 
 		Human james = new Human("James", "London, UK");
 		Horse hubert = new Horse("Hubert", james);
@@ -64,10 +69,27 @@ public class SolidOopApplication {
 	/** Execute OOP Concepts */
 	private static void executeSOLIDConcepts(){
 
+		System.out.println("SOLID:");
+
+		BadBook badBook = new BadBook("James' Tale", "James Smith", "3.141592");
+		badBook.printTextToConsole(); // this method is unrelated to the book and add complexity that we don't need
+
+		Guitar guitar = new Guitar("Fender", "Jaguar", 10);
+		SuperCoolGuitarWithFlames superCoolGuitarWithFlames = new SuperCoolGuitarWithFlames("Orange Flames");
+		// Instead of adding a flameColour field to Guitar(), we can extend it with a subclass - this way we don't risky adding bugs
+
+
 
 		/** SOLID Concepts */
 
-		// Single Responsibility: A class should be responsible for one thing only and only have one reason to change
+		// Single Responsibility: a class should be responsible for one thing only and only have one reason to change
+			// the printTextToConsole() method should be moved into a separate class because the it is unrelated to the book
+				// if we needed to change the print formatting, we could break the Book class
+
+		// Open Close: a class should remain closed to modification but open to extension
+			// Guitar() is extended when we add flameColor to its child class but we avoid modifying the existing logic
+
+		// Listov Substituion
 
 
 	}
