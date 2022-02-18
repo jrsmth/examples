@@ -5,7 +5,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class SuperCoolGuitarWithFlames extends Guitar {
+public class SuperCoolGuitarWithFlames extends Guitar { // credit to https://github.com/eugenp/tutorials/
 
     private String flameColour;
 

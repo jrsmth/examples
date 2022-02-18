@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Guitar {
+public class Guitar { // credit to https://github.com/eugenp/tutorials/
 
     private String make;
     private String model;

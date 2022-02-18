@@ -4,6 +4,14 @@ import com.jrsmiffy.examples.solidoop.oop.Cow;
 import com.jrsmiffy.examples.solidoop.oop.Donkey;
 import com.jrsmiffy.examples.solidoop.oop.Horse;
 import com.jrsmiffy.examples.solidoop.oop.Human;
+import com.jrsmiffy.examples.solidoop.solid.dependencyInversion.BadWindows98Machine;
+import com.jrsmiffy.examples.solidoop.solid.dependencyInversion.GoodWindows98Machine;
+import com.jrsmiffy.examples.solidoop.solid.dependencyInversion.Monitor;
+import com.jrsmiffy.examples.solidoop.solid.dependencyInversion.StandardKeyboard;
+import com.jrsmiffy.examples.solidoop.solid.interfaceSegregation.CrazyPerson;
+import com.jrsmiffy.examples.solidoop.solid.interfaceSegregation.Person;
+import com.jrsmiffy.examples.solidoop.solid.listovSubstitution.ElectricCar;
+import com.jrsmiffy.examples.solidoop.solid.listovSubstitution.MotorCar;
 import com.jrsmiffy.examples.solidoop.solid.openClose.Guitar;
 import com.jrsmiffy.examples.solidoop.solid.openClose.SuperCoolGuitarWithFlames;
 import com.jrsmiffy.examples.solidoop.solid.singleResponsibility.BadBook;
@@ -78,6 +86,21 @@ public class SolidOopApplication {
 		SuperCoolGuitarWithFlames superCoolGuitarWithFlames = new SuperCoolGuitarWithFlames("Orange Flames");
 		// Instead of adding a flameColour field to Guitar(), we can extend it with a subclass - this way we don't risky adding bugs
 
+		MotorCar motorCar = new MotorCar();
+		motorCar.turnOnEngine();
+		ElectricCar electricCar = new ElectricCar();
+		electricCar.turnOnEngine(); // electric cars don't have engines, thus we are violating the Listov Substitution principle...
+			// ... as ElectricCar does not accurately replace its parent / base class
+
+		Person person = new Person();
+		person.petTheBear(); // only a crazy person would pet a bear, we don't actually want to implement this method
+		CrazyPerson crazyPerson = new CrazyPerson();
+		crazyPerson.petTheBear(); // by splitting up the large BearKeeper interface, we have more control
+
+		new GoodWindows98Machine(new StandardKeyboard(), new Monitor());
+		new BadWindows98Machine(); // In the Bad example, we have tightly coupled the Windows98Machine() with the Monitor() and Keyboard()
+		// In the Good example, we have decoupled them by using the 'this' keyword and providing the Monitor() and Keyboard() outside of the...
+			// ...Windows98Machine().
 
 
 		/** SOLID Concepts */
@@ -89,8 +112,15 @@ public class SolidOopApplication {
 		// Open Close: a class should remain closed to modification but open to extension
 			// Guitar() is extended when we add flameColor to its child class but we avoid modifying the existing logic
 
-		// Listov Substituion
+		// Listov Substitution: a child class should be substitutable for its base class
+			// MotorCar() can replace Car() but ElectricCar() cannot do this accurately, hence we violate this principle
 
+		// Interface Segregation: split up large interfaces into smaller ones so that a class only implements the methods that it needs
+			// when Person() implements BearKeeper it gains petBear(), which it doesn't want to implement
+				// it makes sense to split the BearKeeper() into smaller interfaces so we can just implement the methods that we need
+
+		// Dependency Inversion: decouple your high-level modules and low-level modules by using interfaces (abstractions) between them
+			// BadWindows98Machine() is tightly coupled with Monitor() and Keyboard(), whereas GoodWindows98Machine() is not
 
 	}
 
