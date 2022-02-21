@@ -4,6 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/solid-oop/pom.xml" />
+        <option value="$PROJECT_DIR$/design-patterns/pom.xml" />
       </list>
     </option>
   </component>
