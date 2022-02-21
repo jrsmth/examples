@@ -1,7 +1,5 @@
 package com.jrsmiffy.examples.designpatterns.factory;
 
-import com.jrsmiffy.examples.designpatterns.BigUFOEnemyShip;
-
 public class EnemyShipFactory {
 
     public EnemyShip makeEnemyShip(String enemyShipType){

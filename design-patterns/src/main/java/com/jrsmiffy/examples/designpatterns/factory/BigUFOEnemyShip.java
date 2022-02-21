@@ -1,6 +1,4 @@
-package com.jrsmiffy.examples.designpatterns;
-
-import com.jrsmiffy.examples.designpatterns.factory.UFOEnemyShip;
+package com.jrsmiffy.examples.designpatterns.factory;
 
 public class BigUFOEnemyShip extends UFOEnemyShip {
 
